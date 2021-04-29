@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+
+
+
+
+
+body,textarea {
+  /*font-family: Hindi Saral-1;*/
+  /*font-family: shruti;*/
+  background-color: #DDDDDD;
+  color: #232323;
+}
+.hide{
+	display: none;
+}
+textarea{
+	resize: none;
+    width: 90%;
+    height: 80vh;
+    background: white;
+    font-size: 14px;
+    font-weight: bolder;
+    /*white-space: pre-line;*/
+    white-space:nowrap;
+}
+.txtHousing{
+	position: relative;
+	display: inline-block;
+	width: 45vw;
+	text-align: center;
+	margin: 2px;
+	/*background-color: lightgreen;*/
+	box-shadow: 0px 0px 3px black;
+}
+.txtHousing label{
+	font-size: 20px;
+	font-weight: bolder;
+	}
+
+
+
+	</style>
+</head>
+<body>
+	<h1>Hindi saral to unicode</h1>
+	<!-- 	
+ -->
+ <!-- निम्नलिखित प्रश्नों के उत्तर के लिए दिए गए विकल्पों में से सही विकल्प चुनकर लिखिए।
+ inMniliqt p/Xno. ke ]%r ke il0 id0 g0 ivkLpo. me. se shI ivkLp cunkr iliq0| -->
+<textarea id="pakad">
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9 ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ ƒ Ü Ý ¨</textarea>
+<textarea id="pakad1">
+अ ब् च् ड ै फ् ग् ह् ी ज् क् ल् म् न् ौ प् ख्र्  स् त् ू व् भ् श् य् झ् ा ब च द े फ ग ह ि ज क ल म न ो प ख र स त ु व भ श य झ ए ऋ ध ट थ त्र घ छ ष क्ष ढ " ठ थ् त्त श्रामप; ' क्ष् ज्ञ ष् रू , – ं ्र : ; श्रलत; रु श्रगत; ? ध् इ ्‌ उ घ् ़ ण ई । ऊ ण् ड़ ( ) ट्र</textarea>
+<div class="txtHousing">
+<label>Hindi Saral</label>
+<textarea id="pakad2">
+
+</textarea>
+</div>
+<div class="txtHousing">
+<label>Unicode</label>
+<textarea id="pakad3">
+
+</textarea>
+</div>
+<script type="text/javascript">
+	
+let x= document.getElementById('pakad').innerHTML;
+let x1= document.getElementById('pakad1').innerHTML;
+let x3= document.getElementById('pakad3');
+
+
+
+let hindiSeral =x.split(" ");
+hindiSeral.push(" ");
+let nirmala =x1.split(" ");
+nirmala.push(" ");
+console.log(hindiSeral,nirmala);
+// nirmala.push(String.fromCharCode("000A0"));
+document.getElementById('pakad').classList.add("hide");
+document.getElementById('pakad1').classList.add("hide");
+// banastr();
+
+document.getElementById('pakad2').addEventListener("input",banastr)
+
+
+
+
+function banastr(){
+	let x2= document.getElementById('pakad2').value.replace("  ","").trim();
+let len = x2.length;
+	console.log(x2);
+
+let str="";
+for(let i=0; i<len;i++){
+	// console.log(x2.charCodeAt(i))
+	if(x2.charAt(i)=="i"){
+			str += nirmala[hindiSeral.indexOf(x2.charAt(i+1))];
+		str += nirmala[hindiSeral.indexOf(x2.charAt(i))];
+		i++;
+	}
+	else if(x2.charAt(i)=="A" && x2.charAt(i+1)=="a" && x2.charAt(i+2)!="E" && x2.charAt(i+2)!="e"){
+			str += "आ";
+		i++;
+	}
+		else if(x2.charAt(i)=="a" && x2.charAt(i+1)==">"){
+			str += "ाँ";
+		i++;
+	}
+else if(x2.charAt(i)=="(" && x2.charAt(i+2)==")"){
+			str += x2.charAt(i)+x2.charAt(i+1)+x2.charAt(i+2);
+		i++;
+		i++;
+	}
+	// 		else if(x2.charAt(i)=="}" && x2.charAt(i+1)==">"){
+	// 		str += "ऊँ";
+	// 	i++;
+	// }
+	else if(x2.charAt(i)==">"){
+			str += "ँ";
+		// i++;
+	}
+	else if(x2.charCodeAt(i)==32){
+			str += " ";
+		// i++;
+	}
+		else if(x2.charCodeAt(i)==10){
+			str += "\n";
+		// i++;
+	}
+		else if(x2.charAt(i)=="¢" && x2.charAt(i+1)=="o" && x2.charAt(i+2)=="R"){
+			str += "र्क्रो";
+		i++;
+		i++;
+	}
+			else if(x2.charAt(i)=="_" && x2.charAt(i+1)=="_"){
+			str += "..";
+		i++;
+		// i++;
+	}
+else if(x2.charAt(i)=="A" && x2.charAt(i+1)=="a" && x2.charAt(i+2)=="e"){
+			str += "ओ";
+		i++;
+		// i++;
+	}
+else if(x2.charAt(i)=="A" && x2.charAt(i+1)=="a" && x2.charAt(i+2)=="E"){
+			str += "औ";
+		i++;
+		// i++;
+	}
+	else{
+if(nirmala[hindiSeral.indexOf(x2.charAt(i))]){
+	str += nirmala[hindiSeral.indexOf(x2.charAt(i))];
+}
+	
+	}
+}
+// x3.value =str.replace(/\r\n|\n/g,' ');
+x3.value =str;
+	console.log(str);
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
