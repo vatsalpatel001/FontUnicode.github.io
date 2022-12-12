@@ -1,0 +1,54 @@
+
+ @font-face {
+  font-family: Hindi Saral-1;
+  src: url(font/H-SARAL1_1.TTF) format("ttf");
+  
+  /*font-weight: 400;*/
+  /*font-style: normal;*/
+}
+
+ @font-face {
+        font-family: kruti;
+        /* src: url('fonts/Kruti-Dev-010.ttf'); */
+        src: url(font/k010.TTF) format("ttf");
+    }
+body,textarea {
+  /*font-family: Hindi Saral-1;*/
+  /*font-family: shruti;*/
+  background-color: #DDDDDD;
+  color: #232323;
+}
+.hide{
+	display: none;
+}
+textarea{
+	resize: none;
+    width: 90%;
+    height: 80vh;
+    background: white;
+    font-size: 14px;
+    font-weight: bolder;
+    /*white-space: pre-line;*/
+    white-space:nowrap;
+}
+.txtHousing{
+	position: relative;
+	display: inline-block;
+	width: 45vw;
+	text-align: center;
+	margin: 2px;
+	/*background-color: lightgreen;*/
+	box-shadow: 0px 0px 3px black;
+}
+.txtHousing label{
+	font-size: 20px;
+	font-weight: bolder;
+	}
+
+#output_area{
+  font-family: Hindi Saral-1;
+  font-weight: 100;
+}#input_area{
+  font-family: kruti;
+  font-weight: 100;
+}
